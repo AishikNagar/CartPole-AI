@@ -1,0 +1,31 @@
+We notice that in the simple neural network we are not 
+focussing on learning from our past actions.
+Instead, We are only considering a single previous action and not history of
+our actions. This is called ASSIGNMENT OF CREDIT problem. We solve This
+problem by applying a discount rate. This helps us evaluate the action based
+off al the rewards that come after the action, not only the immidiate reward.
+
+Mathematically, we choose a discount rate in the range of 0.95 to 0.99.
+Then, we use this to apply score to the action with formula:
+
+R -> Reward, D-> Discount rate
+
+R1 + R1*D + R2*D^2 + R3*D^3.....
+
+We see that future rewards getting less weightage in the score.
+
+There is a delayed effect because a previous action which was regarded
+good might have caused the game to end in this step (which is then considered
+a bad action). To counter this, we train our model over several episodes.
+
+We also normalize our scores by subtracting the mean and dividing by 
+the standard deviation.
+
+TO SOLVE THE CARTPOLE PROBLEM:
+
+1. Neural network plays several episodes
+2. Optimizer will calculate the gradients (instead of calling minimize)
+3. Compute each action's discounted and normalized score.
+4. Multiply gradient vector by actions score
+5. Negative scores will create opposite gradients when multiplied.
+6. Calculate mean of resulting gradient vector for Gradient Descent

@@ -1,0 +1,2 @@
+model_checkpoint_path: "my-650-step-policy-model"
+all_model_checkpoint_paths: "my-650-step-policy-model"
